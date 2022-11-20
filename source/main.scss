@@ -1,0 +1,123 @@
+@use 'config/reset';
+@use 'config/variaveis';
+@use 'sass:math';
+
+@function pixelParaEm($alvoEmPixel, $contextoPixel: 16px) {
+    @return math.div($alvoEmPixel, $contextoPixel)+em;
+};
+
+
+body {
+
+    background-color: variaveis.$corPrincipal;
+
+    .container {
+        max-width: pixelParaEm(1024px);
+        width: 100%;
+        margin: 0 auto;
+    };
+
+    header {
+        background-color: variaveis.$corHeader;
+        position: sticky;
+        top: 0;
+        left: 0;
+    
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: pixelParaEm(16px)(0px);
+    
+            .menu {
+                display: flex;
+    
+                li {
+                    font-weight: bold;
+                    margin-left: 24px;
+                    list-style: none;
+    
+                    a {
+                        color: #fff;
+                        text-decoration: none;
+                    }
+                }
+            }
+        };
+    };
+
+    section {
+        padding: pixelParaEm(56px) (0px);
+
+        .products {
+            margin-top: pixelParaEm(40px);
+            display: grid;
+            grid-template-columns: repeat(3, 32.66%);
+            column-gap: 1%;
+            row-gap: 4%;
+            width: 100%;
+
+            li {
+                list-style: none;
+            };
+
+            .product-item img {
+                width: 100%;
+                border-radius: pixelParaEm(16px);
+            };
+
+            .product-button {
+                display: block;
+                background-color: variaveis.$corBotaoSection;
+                color: variaveis.$colorWhite;
+                text-align: center;
+                padding: pixelParaEm(8px) (0px);
+                border-radius: pixelParaEm(8px);
+                margin-top: pixelParaEm(8px);
+                text-decoration: none;
+
+                &:hover {
+                    background-color: variaveis.$corBotaoSectionHover;
+                }
+            }
+        };
+    }
+};
+
+@media screen and (max-width: variaveis.$mobile) {
+    
+    body {
+        .container {
+            max-width: 80%;
+        }
+        
+        section {
+            
+            .products {
+                display: block;
+
+                .product-item {
+                    margin-bottom: pixelParaEm(32px);
+                }
+            }
+        }
+    }
+};
+
+@media screen and (max-width: variaveis.$tablet) {
+    body {
+        .container {
+            max-width: 80%;
+
+            .products {
+                grid-template-columns: repeat(2, 48.5%);
+                column-gap: 3%;
+            }
+        }
+    }
+};
+
+
+
+
+
