@@ -34,4 +34,3 @@ exports.default = function() {
     gulp.watch('./source/scripts/*.js', { ignoreInitial: false}, gulp.series(comprimeJavaScript))
     gulp.watch('./source/styles/main.scss', { ignoreInitial: false}, gulp.series(compilaSass))
     gulp.watch('./source/images/*', { ignoreInitial: false}, gulp.series(comprimeImagem))
-};
